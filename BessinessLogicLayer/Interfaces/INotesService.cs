@@ -10,9 +10,10 @@ namespace BessinessLogicLayer.Interfaces
 {
     public interface INotesService
     {
-        Note Create(CreateNoteDto dto, int userId);
-        IEnumerable<Note> GetAll(int userId);
-        Note Update(int noteId, UpdateNoteDto dto, int userId);
-        void MoveToTrash(int noteId, int userId);
+
+        Task<Note> CreateAsync(CreateNoteDto dto, int userId);
+        Task<IEnumerable<Note>> GetAllAsync(int userId);
+        Task<Note> UpdateAsync(int noteId, UpdateNoteDto dto, int userId);
+        Task MoveToTrashAsync(int noteId, int userId);
     }
 }

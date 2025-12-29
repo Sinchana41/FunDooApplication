@@ -81,7 +81,8 @@ namespace BessinessLogicLayer.Implementations
             var claims = new[]
             {
             new Claim("UserId", user.UserId.ToString()),
-            new Claim(ClaimTypes.Email, user.Email)
+            new Claim(ClaimTypes.Email, user.Email),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
 
             var key = new SymmetricSecurityKey(

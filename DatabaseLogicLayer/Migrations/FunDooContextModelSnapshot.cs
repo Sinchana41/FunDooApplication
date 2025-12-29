@@ -22,6 +22,66 @@ namespace DatabaseLogicLayer.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("ModelLayer.Entity.Collaborator", b =>
+                {
+                    b.Property<int>("CollaboratorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CollaboratorId"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(225)
+                        .HasColumnType("nvarchar(225)");
+
+                    b.Property<int>("NoteId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CollaboratorId");
+
+                    b.HasIndex("NoteId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("collaborators");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entity.Label1", b =>
+                {
+                    b.Property<int>("LabelId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LabelId"));
+
+                    b.Property<DateTime>("CreateAT")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LabelName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("UpdateAT")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("LabelId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("labels");
+                });
+
             modelBuilder.Entity("ModelLayer.Entity.Note", b =>
                 {
                     b.Property<int>("NotesId")
@@ -74,6 +134,21 @@ namespace DatabaseLogicLayer.Migrations
                     b.ToTable("notes");
                 });
 
+            modelBuilder.Entity("ModelLayer.Entity.NoteLabel", b =>
+                {
+                    b.Property<int>("NotesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LabelId")
+                        .HasColumnType("int");
+
+                    b.HasKey("NotesId");
+
+                    b.HasIndex("LabelId");
+
+                    b.ToTable("note_labels");
+                });
+
             modelBuilder.Entity("ModelLayer.Entity.User", b =>
                 {
                     b.Property<int>("UserId")
@@ -112,6 +187,36 @@ namespace DatabaseLogicLayer.Migrations
                     b.ToTable("users");
                 });
 
+            modelBuilder.Entity("ModelLayer.Entity.Collaborator", b =>
+                {
+                    b.HasOne("ModelLayer.Entity.Note", "Note")
+                        .WithMany("Collaborators")
+                        .HasForeignKey("NoteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ModelLayer.Entity.User", "User")
+                        .WithMany("Collaborators")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Note");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entity.Label1", b =>
+                {
+                    b.HasOne("ModelLayer.Entity.User", "User")
+                        .WithMany("Labels")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("ModelLayer.Entity.Note", b =>
                 {
                     b.HasOne("ModelLayer.Entity.User", "User")
@@ -123,8 +228,43 @@ namespace DatabaseLogicLayer.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("ModelLayer.Entity.NoteLabel", b =>
+                {
+                    b.HasOne("ModelLayer.Entity.Label1", "Label")
+                        .WithMany("NoteLabels")
+                        .HasForeignKey("LabelId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("ModelLayer.Entity.Note", "Note")
+                        .WithMany("NoteLabels")
+                        .HasForeignKey("NotesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Label");
+
+                    b.Navigation("Note");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entity.Label1", b =>
+                {
+                    b.Navigation("NoteLabels");
+                });
+
+            modelBuilder.Entity("ModelLayer.Entity.Note", b =>
+                {
+                    b.Navigation("Collaborators");
+
+                    b.Navigation("NoteLabels");
+                });
+
             modelBuilder.Entity("ModelLayer.Entity.User", b =>
                 {
+                    b.Navigation("Collaborators");
+
+                    b.Navigation("Labels");
+
                     b.Navigation("Notes");
                 });
 #pragma warning restore 612, 618

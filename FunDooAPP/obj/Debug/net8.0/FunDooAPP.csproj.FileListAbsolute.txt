@@ -4,7 +4,6 @@ C:\Users\Sinchana .A.N\source\repos\FunDooAPP\obj\Debug\net8.0\FunDooAPP.Generat
 C:\Users\Sinchana .A.N\source\repos\FunDooAPP\obj\Debug\net8.0\FunDooAPP.AssemblyInfoInputs.cache
 C:\Users\Sinchana .A.N\source\repos\FunDooAPP\obj\Debug\net8.0\FunDooAPP.AssemblyInfo.cs
 C:\Users\Sinchana .A.N\source\repos\FunDooAPP\obj\Debug\net8.0\FunDooAPP.csproj.CoreCompileInputs.cache
-C:\Users\Sinchana .A.N\source\repos\FunDooAPP\obj\Debug\net8.0\FunDooAPP.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Sinchana .A.N\source\repos\FunDooAPP\obj\Debug\net8.0\FunDooAPP.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Sinchana .A.N\source\repos\FunDooAPP\obj\Debug\net8.0\FunDooAPP.sourcelink.json
 C:\Users\Sinchana .A.N\source\repos\FunDooAPP\bin\Debug\net8.0\appsettings.Development.json
@@ -146,3 +145,18 @@ C:\Users\Sinchana .A.N\source\repos\FunDooAPP\obj\Debug\net8.0\refint\FunDooAPP.
 C:\Users\Sinchana .A.N\source\repos\FunDooAPP\obj\Debug\net8.0\FunDooAPP.pdb
 C:\Users\Sinchana .A.N\source\repos\FunDooAPP\obj\Debug\net8.0\FunDooAPP.genruntimeconfig.cache
 C:\Users\Sinchana .A.N\source\repos\FunDooAPP\obj\Debug\net8.0\ref\FunDooAPP.dll
+C:\Users\Sinchana .A.N\source\repos\FunDooAPP\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\Sinchana .A.N\source\repos\FunDooAPP\bin\Debug\net8.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
+C:\Users\Sinchana .A.N\source\repos\FunDooAPP\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Sinchana .A.N\source\repos\FunDooAPP\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Sinchana .A.N\source\repos\FunDooAPP\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\Sinchana .A.N\source\repos\FunDooAPP\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Sinchana .A.N\source\repos\FunDooAPP\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
+C:\Users\Sinchana .A.N\source\repos\FunDooAPP\bin\Debug\net8.0\StackExchange.Redis.dll
+C:\Users\Sinchana .A.N\source\repos\FunDooAPP\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Sinchana .A.N\source\repos\FunDooAPP\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Sinchana .A.N\source\repos\FunDooAPP\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+C:\Users\Sinchana .A.N\source\repos\FunDooAPP\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\Sinchana .A.N\source\repos\FunDooAPP\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\Sinchana .A.N\source\repos\FunDooAPP\bin\Debug\net8.0\RabbitMQ.Client.dll
+C:\Users\Sinchana .A.N\source\repos\FunDooAPP\obj\Debug\net8.0\FunDooAPP.MvcApplicationPartsAssemblyInfo.cs

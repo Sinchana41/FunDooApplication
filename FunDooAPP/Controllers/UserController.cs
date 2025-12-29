@@ -103,7 +103,7 @@ namespace FunDooAPP.Controllers
             if (dto == null)
                 return BadRequest("Register data is required");
 
-            _emailService.Send(dto.Email, "Welcomw to Fun Doo Application", "---------------------------------------------------------------------------------------");
+            _emailService.Send(dto.Email, "Welcomw to Fun Doo Application", "You are registration to Fun Doo App is Done");
         
             var result = _service.Register(dto);
             return Ok(result);

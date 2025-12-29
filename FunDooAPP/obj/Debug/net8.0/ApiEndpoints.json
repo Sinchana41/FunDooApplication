@@ -1,8 +1,208 @@
 [
   {
+    "ContainingType": "FunDooAPP.Controllers.CollaboratorsController",
+    "Method": "Add",
+    "RelativePath": "api/Collaborators",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ModelLayer.DTOs.AddCollaboratorDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FunDooAPP.Controllers.CollaboratorsController",
+    "Method": "Delete",
+    "RelativePath": "api/Collaborators/{collaboratorId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "collaboratorId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FunDooAPP.Controllers.CollaboratorsController",
+    "Method": "GetByNote",
+    "RelativePath": "api/Collaborators/{noteId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "noteId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FunDooAPP.Controllers.CollaboratorsController",
+    "Method": "DeleteByEmail",
+    "RelativePath": "api/Collaborators/{noteId}/{email}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "noteId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FunDooAPP.Controllers.CollaboratorsController",
+    "Method": "GetSharedNotes",
+    "RelativePath": "api/Collaborators/shared-notes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FunDooAPP.Controllers.LabelsController",
+    "Method": "Create",
+    "RelativePath": "api/Labels",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ModelLayer.DTOs.CreateLabelDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FunDooAPP.Controllers.LabelsController",
+    "Method": "GetAll",
+    "RelativePath": "api/Labels",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FunDooAPP.Controllers.LabelsController",
+    "Method": "Update",
+    "RelativePath": "api/Labels/{labelId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "labelId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "ModelLayer.DTOs.UpdateLabelDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FunDooAPP.Controllers.LabelsController",
+    "Method": "Delete",
+    "RelativePath": "api/Labels/{labelId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "labelId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FunDooAPP.Controllers.LabelsController",
+    "Method": "GetNotesByLabel",
+    "RelativePath": "api/Labels/{labelId}/notes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "labelId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FunDooAPP.Controllers.LabelsController",
+    "Method": "AddLabelToNote",
+    "RelativePath": "api/Labels/{labelId}/notes/{noteId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "labelId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "noteId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FunDooAPP.Controllers.LabelsController",
+    "Method": "RemoveLabelFromNote",
+    "RelativePath": "api/Labels/{labelId}/notes/{noteId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "labelId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "noteId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FunDooAPP.Controllers.NotesController",
     "Method": "Create",
-    "RelativePath": "api/Notes",
+    "RelativePath": "api/notes",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -18,7 +218,7 @@
   {
     "ContainingType": "FunDooAPP.Controllers.NotesController",
     "Method": "GetAll",
-    "RelativePath": "api/Notes",
+    "RelativePath": "api/notes",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -28,7 +228,7 @@
   {
     "ContainingType": "FunDooAPP.Controllers.NotesController",
     "Method": "Update",
-    "RelativePath": "api/Notes/{noteId}",
+    "RelativePath": "api/notes/{noteId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -48,8 +248,8 @@
   },
   {
     "ContainingType": "FunDooAPP.Controllers.NotesController",
-    "Method": "Trash",
-    "RelativePath": "api/Notes/{noteId}",
+    "Method": "MoveToTrash",
+    "RelativePath": "api/notes/{noteId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,

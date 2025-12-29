@@ -37,7 +37,12 @@ namespace ModelLayer.Entity
 
            [ForeignKey("UserId")]
            public int UserId { get; set; }
-            public User User { get; set; }
+           
+          //Navigation
+           public User User { get; set; }
+           public ICollection<NoteLabel> NoteLabels { get; set; }
+
+           public ICollection<Collaborator> Collaborators { get; set; }
         
     }
 }
