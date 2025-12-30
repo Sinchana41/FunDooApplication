@@ -30,6 +30,8 @@ namespace ModelLayer.Entity
         [Required]
         public string Password { get; set; }
 
+        public string? ResetToken { get; set; }
+        public DateTime? ResetTokenExpiry { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;

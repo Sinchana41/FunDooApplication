@@ -108,8 +108,6 @@ namespace BessinessLogicLayer.Service
             //  Clear cache
             await _cache.RemoveAsync($"notes_{userId}");
         }
-
     }
-
 }
 

@@ -1,5 +1,5 @@
 ﻿using BessinessLogicLayer.Interfaces;
-using DatabaseLogicLayer.Repository;
+using DatabaseLogicLayer.Repository.Implementations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using ModelLayer.DTOs;
@@ -101,5 +101,68 @@ namespace BessinessLogicLayer.Implementations
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+        public void ForgotPassword(string email)
+        {
+            var user = _repo.GetByEmail(email);
+            if (user == null)
+                throw new Exception("User not found");
+
+            var claims = new[]
+            {
+                new Claim("UserId", user.UserId.ToString()),
+                new Claim(ClaimTypes.Email, user.Email)
+            };
+
+            var key = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(_config["Jwt:Key"])
+            );
+
+            var token = new JwtSecurityToken(
+                issuer: _config["Jwt:Issuer"],
+                audience: _config["Jwt:Audience"],
+                claims: claims,
+                expires: DateTime.UtcNow.AddMinutes(15),
+                signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256)
+            );
+
+            string resetToken = new JwtSecurityTokenHandler().WriteToken(token);
+
+            //Send via Email (SMTP in next step)
+            Console.WriteLine($"Reset Password Token: {resetToken}");
+        }
+
+        public void ResetPassword(ResetPasswordDto dto)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.UTF8.GetBytes(_config["Jwt:Key"]);
+
+            ClaimsPrincipal principal = tokenHandler.ValidateToken(
+                dto.Token,
+                new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = _config["Jwt:Issuer"],
+                    ValidAudience = _config["Jwt:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(key)
+                },
+                out _
+            );
+
+            int userId = int.Parse(principal.FindFirst("UserId").Value);
+
+            var user = _repo.GetById(userId);
+            if (user == null)
+                throw new Exception("User not found");
+
+            user.Password = BCrypt.Net.BCrypt.HashPassword(dto.NewPassword);
+            user.UpdatedAt = DateTime.UtcNow;
+
+            _repo.Update(user); 
+        }
+
     }
 }

@@ -3,7 +3,6 @@ using BessinessLogicLayer.Interfaces;
 using BessinessLogicLayer.Rabbitmq;
 using BessinessLogicLayer.Service;
 using DatabaseLogicLayer.Context;
-using DatabaseLogicLayer.Repository;
 using DatabaseLogicLayer.Repository.Implementations;
 using DatabaseLogicLayer.Repository.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;

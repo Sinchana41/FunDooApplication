@@ -9,8 +9,13 @@ namespace BessinessLogicLayer.Interfaces
 {
     public interface IUserService
     {
-        public RegisterResponseDto Register(RegisterUserDto dto);
-       public LoginResponseDto Login(LoginUserDto dto);
+        // AUTH
+        RegisterResponseDto Register(RegisterUserDto dto);
+        LoginResponseDto Login(LoginUserDto dto);
+
+        // FORGOT PASSWORD
+        void ForgotPassword(string email);
+        void ResetPassword(ResetPasswordDto dto);
 
     }
 }

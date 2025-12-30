@@ -18,7 +18,7 @@ namespace BessinessLogicLayer.Rabbitmq
 
         public void Publish<T>(string queueName, T message)
         {
-            using var connection = _factory.CreateConnection(); // WORKS
+            using var connection = _factory.CreateConnection(); //WORKS
             using var channel = connection.CreateModel();
 
             channel.QueueDeclare(

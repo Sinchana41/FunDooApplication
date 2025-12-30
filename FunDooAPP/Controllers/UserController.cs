@@ -119,5 +119,20 @@ namespace FunDooAPP.Controllers
             var result = _service.Login(dto);
             return Ok(result);
         }
+
+        [HttpPost("forgot-password")]
+        public IActionResult ForgotPassword(ForgotPasswordDto dto)
+        {
+            _service.ForgotPassword(dto.Email);
+            return Ok("Reset link sent to email");
+        }
+
+        [HttpPost("reset-password")]
+        public IActionResult ResetPassword([FromBody] ResetPasswordDto dto)
+        {
+            _service.ResetPassword(dto);
+            return Ok("Password reset successful");
+        }
+
     }
 }
