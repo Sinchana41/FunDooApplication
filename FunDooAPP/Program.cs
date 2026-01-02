@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -102,6 +103,21 @@ builder.Services.AddScoped<ILabelService, LabelService>();
 
 builder.Services.AddScoped<ICollaboratorRepository, CollaboratorRepository>();
 builder.Services.AddScoped<ICollaboratorService, CollaboratorService>();
+
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .WriteTo.Console()
+    .WriteTo.File(
+        path: "Logs/fundoo-.log",
+        rollingInterval: RollingInterval.Day,
+        retainedFileCountLimit: 7
+    )
+    .CreateLogger();
+
+builder.Logging.ClearProviders();
+builder.Host.UseSerilog();
+
 
 
 var app = builder.Build();

@@ -1,6 +1,8 @@
 ﻿using BessinessLogicLayer.Interfaces;
+using BessinessLogicLayer.Service;
 using DatabaseLogicLayer.Repository.Implementations;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using ModelLayer.DTOs;
 using ModelLayer.Entity;
@@ -18,19 +20,33 @@ namespace BessinessLogicLayer.Implementations
     {
         private readonly UserRepository _repo;
         private readonly IConfiguration _config;
+        private readonly ILogger<UserService> _logger;
+        private readonly EmailService _emailService;
 
-        public UserService(UserRepository repo, IConfiguration config)
+        public UserService(
+            UserRepository repo,
+            IConfiguration config,
+            ILogger<UserService> logger,
+            EmailService emailService
+        )
         {
             _repo = repo;
             _config = config;
+            _logger = logger;
+            _emailService = emailService;
         }
 
         // REGISTER
         public RegisterResponseDto Register(RegisterUserDto dto)
         {
+            _logger.LogInformation("Registering user with Email: {Email}", dto.Email);
+
             var existingUser = _repo.GetByEmail(dto.Email);
             if (existingUser != null)
+            {
+                _logger.LogWarning("Registration failed. Email already exists: {Email}", dto.Email);
                 throw new Exception("Email already exists");
+            }
 
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(dto.Password);
 
@@ -46,6 +62,16 @@ namespace BessinessLogicLayer.Implementations
 
             _repo.Add(user);
 
+            _logger.LogInformation("User saved to DB. Sending welcome email to {Email}", user.Email);
+
+            _emailService.Send(
+                user.Email,
+                "Welcome to FunDoo",
+                "You have registered successfully"
+            );
+
+            _logger.LogInformation("Welcome email sent to {Email}", user.Email);
+
             return new RegisterResponseDto
             {
                 UserId = user.UserId,
@@ -54,19 +80,14 @@ namespace BessinessLogicLayer.Implementations
             };
         }
 
-        //  LOGIN
+        // LOGIN (unchanged)
         public LoginResponseDto Login(LoginUserDto dto)
         {
             var user = _repo.GetByEmail(dto.Email);
-            if (user == null)
-                throw new Exception("Invalid credentials");
-
-            bool isValid = BCrypt.Net.BCrypt.Verify(dto.Password, user.Password);
-            if (!isValid)
+            if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.Password))
                 throw new Exception("Invalid credentials");
 
             string token = GenerateJwtToken(user);
-
             return new LoginResponseDto
             {
                 UserId = user.UserId,
@@ -74,6 +95,12 @@ namespace BessinessLogicLayer.Implementations
                 Token = token
             };
         }
+
+
+
+
+
+
 
         // JWT GENERATION
         private string GenerateJwtToken(User user)
@@ -161,7 +188,7 @@ namespace BessinessLogicLayer.Implementations
             user.Password = BCrypt.Net.BCrypt.HashPassword(dto.NewPassword);
             user.UpdatedAt = DateTime.UtcNow;
 
-            _repo.Update(user); 
+            _repo.Update(user);
         }
 
     }

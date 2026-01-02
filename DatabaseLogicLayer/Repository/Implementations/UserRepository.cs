@@ -1,5 +1,6 @@
 ﻿using DatabaseLogicLayer.Context;
 using DatabaseLogicLayer.Repository.Interfaces;
+using Microsoft.Extensions.Logging;
 using ModelLayer.Entity;
 using System;
 using System.Collections.Generic;
@@ -12,19 +13,27 @@ namespace DatabaseLogicLayer.Repository.Implementations
     public class UserRepository : IUserRepository
     {
         private readonly FunDooContext _context;
+        private readonly ILogger<UserRepository> _logger;
 
-        public UserRepository(FunDooContext context)
+
+        public UserRepository(FunDooContext context, ILogger<UserRepository> logger)
         {
             _context = context;
+            _logger = logger;
         }
         public void Add(User user)
         {
+            _logger.LogInformation("Adding user to database: {Email}", user.Email);
+
             _context.Users.Add(user);
             _context.SaveChanges();
+
+            _logger.LogInformation("User saved successfully with UserId: {UserId}", user.UserId);
         }
 
         public User GetByEmail(string email)
         {
+            _logger.LogDebug("Fetching user by Email: {Email}", email);
             return _context.Users.FirstOrDefault(u => u.Email == email);
         }
 

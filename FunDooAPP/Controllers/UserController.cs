@@ -18,14 +18,16 @@ namespace FunDooAPP.Controllers
         private readonly FunDooContext dBContext;
         private readonly IUserService _service;
         private readonly EmailService _emailService;
+        private readonly ILogger<UserController> _logger;
 
-       
-        public UserController(FunDooContext dBContext, IUserService service, EmailService _emailService)
+
+        public UserController(FunDooContext dBContext, IUserService service, EmailService _emailService, ILogger<UserController> logger)
         {
             this.dBContext = dBContext;
             _service = service;
             this._emailService = _emailService;
-                 
+            _logger = logger;
+
         }
 
         [HttpGet]
@@ -98,25 +100,27 @@ namespace FunDooAPP.Controllers
         }
 
         [HttpPost("register")]
-        public IActionResult Register([FromBody] RegisterUserDto dto)
+        public IActionResult Register(RegisterUserDto dto)
         {
-            if (dto == null)
-                return BadRequest("Register data is required");
+            _logger.LogInformation("Register request received for Email: {Email}", dto.Email);
 
-            _emailService.Send(dto.Email, "Welcomw to Fun Doo Application", "You are registration to Fun Doo App is Done");
-        
             var result = _service.Register(dto);
+
+            _logger.LogInformation("User registered successfully with UserId: {UserId}", result.UserId);
+
             return Ok(result);
         }
 
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginUserDto dto)
+        public IActionResult Login(LoginUserDto dto)
         {
-            if (dto == null)
-                return BadRequest("Login data is required");
+            _logger.LogInformation("Login attempt for Email: {Email}", dto.Email);
 
             var result = _service.Login(dto);
+
+            _logger.LogInformation("Login successful for UserId: {UserId}", result.UserId);
+
             return Ok(result);
         }
 
