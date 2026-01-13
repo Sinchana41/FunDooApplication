@@ -1,0 +1,70 @@
+/* Page center */
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+}
+
+/* Card */
+.login-card {
+  height: 450px;
+  width:  400px;
+  padding: 40px 32px;
+  border-radius: 8px;
+}
+
+/* Google logo */
+.logo {
+  font-size: 32px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.g-blue { color: #4285f4; }
+.g-red { color: #ea4335; }
+.g-yellow { color: #fbbc05; }
+.g-green { color: #34a853; }
+
+/* Text */
+h2 {
+  text-align: center;
+  margin: 10px 0;
+  font-weight: 400;
+}
+
+.subtitle {
+  text-align: center;
+  color: #5f6368;
+  margin-bottom: 25px;
+}
+
+/* Inputs */
+.full-width {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* Forgot password */
+.forgot {
+  display: block;
+  color: #1a73e8;
+  font-size: 14px;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+/* Bottom actions */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.create {
+  color: #1a73e8;
+  font-size: 14px;
+  cursor: pointer;
+}

@@ -1,0 +1,98 @@
+
+
+/* FULL PAGE CENTER */
+.signup-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f1f3f4;
+}
+
+/* CARD — VERY IMPORTANT FIXES HERE */
+.signup-card {
+  width: 900px;
+  max-width: 900px;
+  display: flex;
+  flex-direction: row;      /* FORCE LEFT–RIGHT */
+  flex-wrap: nowrap;        /* PREVENT DROPPING DOWN */
+  align-items: center;      /* VERTICAL ALIGN */
+  padding: 48px 40px;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* LEFT FORM */
+.left {
+  flex: 2;
+  padding-right: 40px;
+}
+
+/* RIGHT IMAGE */
+.right {
+  flex: 1;
+  text-align: center;
+  color: #5f6368;
+}
+
+.right img {
+  width: 180px;
+  margin-bottom: 16px;
+}
+
+/* GOOGLE LOGO */
+.logo {
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.g-blue { color: #4285f4; }
+.g-red { color: #ea4335; }
+.g-yellow { color: #fbbc05; }
+.g-green { color: #34a853; }
+
+/* ROW FIELDS */
+.row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.row mat-form-field {
+  flex: 1;
+}
+
+/* FULL WIDTH FIELD */
+.full-width {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* TEXT */
+.hint {
+  font-size: 12px;
+  color: #5f6368;
+  margin-top: -6px;
+  margin-bottom: 6px;
+}
+
+.link {
+  color: #1a73e8;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* ACTIONS */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+}

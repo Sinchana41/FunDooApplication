@@ -1,0 +1,40 @@
+<div class="login-container">
+  <mat-card class="login-card">
+
+    <!-- Logo -->
+    <div class="logo">
+      <span class="g-blue">G</span>
+      <span class="g-red">o</span>
+      <span class="g-yellow">o</span>
+      <span class="g-blue">g</span>
+      <span class="g-green">l</span>
+      <span class="g-red">e</span>
+    </div>
+
+    <h2>Login</h2>
+    <p class="subtitle">Use your FunDoo Account</p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+      </mat-form-field>
+
+      <a class="forgot">Forgot password?</a>
+
+      <div class="actions">
+        <a routerLink="/signup">Create account</a>
+        <button mat-raised-button color="primary" type="submit">
+          Login
+        </button>
+      </div>
+
+    </form>
+  </mat-card>
+</div>

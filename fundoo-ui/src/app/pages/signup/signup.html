@@ -1,0 +1,74 @@
+<div class="signup-container">
+  <mat-card class="signup-card">
+
+    <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+
+      <!-- Left Section -->
+      <div class="left">
+
+        <!-- Logo -->
+        <div class="logo">
+          <span class="g-blue">G</span>
+          <span class="g-red">o</span>
+          <span class="g-yellow">o</span>
+          <span class="g-blue">g</span>
+          <span class="g-green">l</span>
+          <span class="g-red">e</span>
+        </div>
+
+        <h2>Create your Google Account</h2>
+
+        <!-- Name -->
+        <div class="row">
+          <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName" />
+          </mat-form-field>
+        </div>
+
+        <!-- Email -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" />
+        </mat-form-field>
+
+        <!-- Password -->
+        <div class="row">
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" />
+          </mat-form-field>
+        </div>
+
+        <p class="hint">
+          Use 8 or more characters with a mix of letters, numbers & symbols
+        </p>
+
+        <!-- Bottom -->
+        <div class="actions">
+          <a class="link" routerLink="/login">Sign in instead</a>
+          <button mat-raised-button color="primary" type="submit">
+            Next
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Right Section -->
+      <div class="right">
+        <img
+          src="https://logowik.com/content/uploads/images/google-account-security.jpg"
+          alt="account"
+        />
+        <p>One account. All of Google working for you.</p>
+      </div>
+
+    </form>
+
+  </mat-card>
+</div>
