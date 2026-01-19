@@ -1,0 +1,9 @@
+<mat-card class="create-note">
+  <input matInput placeholder="Title" [(ngModel)]="title" />
+  <textarea matInput placeholder="Take a note..." [(ngModel)]="description"></textarea>
+
+  <div class="actions">
+    <button mat-button (click)="addNote()">Close</button>
+  </div>
+</mat-card>
+

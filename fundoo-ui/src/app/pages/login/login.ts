@@ -49,5 +49,18 @@ export class Login implements OnInit {
         alert('Invalid email or password');
       }
     });
+
+   if (this.loginForm.invalid) return;
+
+  this.authService.login(this.loginForm.value).subscribe({
+    next: (res: any) => {
+      localStorage.setItem('token', res.token);
+      localStorage.setItem('email', res.email);
+      this.router.navigate(['/dashboard']);
+    },
+    error: (err) => {
+      alert(err.error?.message || 'Invalid email or password');
+    }
+  });
   }
 }

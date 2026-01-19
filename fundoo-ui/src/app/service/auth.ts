@@ -32,6 +32,14 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
+    getNotes() {
+    return this.http.get<any[]>(this.baseUrl);
+  }
+
+  createNote(note: any) {
+    return this.http.post(this.baseUrl, note);
+  }
+
   // LOGOUT
   logout() {
     localStorage.clear();

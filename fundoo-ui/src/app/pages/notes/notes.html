@@ -1,0 +1,45 @@
+<!-- CREATE NOTE (COLLAPSED / EXPANDED) -->
+<div class="create-note" (click)="expandNote()" [class.expanded]="isExpanded">
+
+  <!-- Title (only when expanded) -->
+  <input
+    *ngIf="isExpanded"
+    type="text"
+    placeholder="Title"
+    [(ngModel)]="title"
+    class="note-title"
+  />
+
+  <!-- Description -->
+  <textarea
+    placeholder="Take a note..."
+    [(ngModel)]="description"
+    class="note-desc"
+  ></textarea>
+
+  <!-- ACTIONS -->
+  <div class="note-footer">
+    <div class="icons">
+      <span title="Checklist">☑️</span>
+      <span title="Draw">✏️</span>
+      <span title="Image">🖼️</span>
+    </div>
+
+    <button class="close-btn" (click)="closeNote($event)">
+      Close
+    </button>
+  </div>
+</div>
+
+<!-- NOTES GRID -->
+<div class="notes-grid" *ngIf="notes.length > 0">
+  <div class="note-card" *ngFor="let note of notes">
+    <h4>{{ note.title }}</h4>
+    <p>{{ note.description }}</p>
+  </div>
+</div>
+
+<!-- EMPTY STATE -->
+<div class="empty-state" *ngIf="notes.length === 0">
+  <div class="search-icon">🔍</div>
+  <p>Notes you add appear here<
