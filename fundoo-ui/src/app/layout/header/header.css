@@ -1,20 +1,10 @@
-.header {
-  background: white;
-  border-bottom: 1px solid #ddd;
+.layout {
+  display: flex;
+  height: 100vh;
 }
 
-.logo {
-  font-size: 20px;
-  margin-left: 10px;
-  color: #fbbc04;
-  font-weight: 600;
-}
-
-.search {
-  width: 400px;
-  margin-left: 40px;
-}
-
-.spacer {
+.content {
   flex: 1;
+  padding: 24px;
+  background: #f8f9fa;
 }

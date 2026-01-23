@@ -44,4 +44,13 @@ export class AuthService {
   logout() {
     localStorage.clear();
   }
+
+  getArchivedNotes() {
+  return this.http.get(`${this.baseUrl}/archive`);
+}
+
+getTrashedNotes() {
+  return this.http.get(`${this.baseUrl}/trash`);
+}
+
 }

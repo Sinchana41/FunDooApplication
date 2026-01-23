@@ -10,19 +10,21 @@ export class NotesService {
 
   constructor(private http: HttpClient) {}
 
-  private headers() {
-    const token = localStorage.getItem('token');
-    return {
-      headers: new HttpHeaders({
-        Authorization: `Bearer ${token}`
-      })
-    };
-  }
+ private headers() {
+  const token = localStorage.getItem('token');
+
+  return {
+    headers: new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    })
+  };
+}
+
 
   // CREATE
-  addNote(note: any) {
-    return this.http.post(this.baseUrl, note, this.headers());
-  }
+ addNote(note: any) {
+  return this.http.post(this.baseUrl, note, this.headers());
+}
 
   // GET ALL
   getNotes() {

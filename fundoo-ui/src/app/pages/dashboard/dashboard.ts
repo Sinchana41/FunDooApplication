@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { NotesService } from '../notes/service';
 
 @Component({
@@ -12,23 +12,35 @@ import { NotesService } from '../notes/service';
 })
 export class DashboardComponent {
 
-  notes: any[] = [];
+  isExpanded = false;
+  title = '';
   description = '';
-  isSidebarOpen = true;
 
   constructor(private notesService: NotesService) {}
 
-  ngOnInit() {
-    this.loadNotes();
+  expandNote() {
+    this.isExpanded = true;
   }
 
-  loadNotes() {
-    this.notesService.getNotes().subscribe((res: any) => {
-      this.notes = res;
-    });
+  closeNote() {
+    if (!this.title.trim() && !this.description.trim()) {
+      this.reset();
+      return;
+    }
+
+    this.notesService.addNote({
+      title: this.title,
+      description: this.description
+    }).subscribe(() => this.reset());
   }
 
-  toggleSidebar() {
-    this.isSidebarOpen = !this.isSidebarOpen;
+  reset() {
+    this.isExpanded = false;
+    this.title = '';
+    this.description = '';
+  }
+
+  stop(e: Event) {
+    e.stopPropagation();
   }
 }

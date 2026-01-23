@@ -1,0 +1,22 @@
+/* Container below navbar */
+.sidenav-container {
+  height: calc(100vh - 64px); /* navbar height */
+}
+
+/* Sidebar */
+.sidenav {
+  width: 280px;
+  background-color: #ffffff;
+  border-right: 1px solid #e0e0e0;
+}
+
+.sidenav.collapsed {
+  width: 72px;
+}
+
+/* Main content (IMPORTANT) */
+mat-sidenav-content {
+  background-color: #f1f3f4;
+  padding: 8px 24px;     /* 🔥 top spacing like Google Keep */
+  overflow-y: auto;
+}

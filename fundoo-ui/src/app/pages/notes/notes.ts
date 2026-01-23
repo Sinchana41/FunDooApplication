@@ -9,6 +9,9 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './notes.html',
   styleUrl: './notes.css'
 })
+
+
+
 export class Notes {
 
   isExpanded = false;

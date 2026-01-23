@@ -1,14 +1,39 @@
-<mat-nav-list class="sidebar">
-  <a mat-list-item routerLink="/dashboard">
-    <mat-icon>lightbulb</mat-icon> Notes
-  </a>
+<div class="sidebar">
 
-  <a mat-list-item routerLink="/archive">
-    <mat-icon>archive</mat-icon> Archive
-  </a>
+  <div
+    class="item"
+    [class.active]="active === 'notes'"
+    (click)="setActive('notes')"
+  >
+    💡 <span>Notes</span>
+  </div>
 
-  <a mat-list-item routerLink="/trash">
-    <mat-icon>delete</mat-icon> Trash
-  </a>
-</mat-nav-list>
+  <div
+    class="item"
+    [class.active]="active === 'reminders'"
+    (click)="setActive('reminders')"
+  >
+    ⏰ <span>Reminders</span>
+  </div>
 
+  <div class="item">
+    ✏️ <span>Edit labels</span>
+  </div>
+
+  <div
+    class="item"
+    [class.active]="active === 'archive'"
+    (click)="setActive('archive')"
+  >
+    📥 <span>Archive</span>
+  </div>
+
+  <div
+    class="item"
+    [class.active]="active === 'trash'"
+    (click)="setActive('trash')"
+  >
+    🗑 <span>Trash</span>
+  </div>
+
+</div>

@@ -1,18 +1,7 @@
-<mat-toolbar class="header">
-  <button mat-icon-button>
-    <mat-icon>menu</mat-icon>
-  </button>
+<div class="layout">
+  <app-sidebar></app-sidebar>
 
-  <span class="logo">FunDoo</span>
-
-  <mat-form-field appearance="outline" class="search">
-    <mat-label>Search</mat-label>
-    <input matInput />
-  </mat-form-field>
-
-  <span class="spacer"></span>
-
-  <button mat-icon-button>
-    <mat-icon>account_circle</mat-icon>
-  </button>
-</mat-toolbar>
+  <div class="content">
+    <app-dashboard></app-dashboard>
+  </div>
+</div>

@@ -1,58 +1,38 @@
-<div class="app-container">
+<!-- COLLAPSED -->
+<div class="note-collapsed" *ngIf="!isExpanded" (click)="expandNote()">
+  <span>Take a note...</span>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="header-left">
-      <div class="menu-icon" (click)="toggleSidebar()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <span class="logo">Keep</span>
+  <div class="icons">
+    <span (click)="stop($event)">☑</span>
+    <span (click)="stop($event)">✏️</span>
+    <span (click)="stop($event)">🖼</span>
+  </div>
+</div>
+
+<!-- EXPANDED -->
+<div class="note-expanded" *ngIf="isExpanded">
+
+  <input
+    class="title"
+    placeholder="Title"
+    [(ngModel)]="title"
+  />
+
+  <textarea
+    placeholder="Take a note..."
+    [(ngModel)]="description"
+  ></textarea>
+
+  <div class="footer">
+    <div class="icons">
+      <span>🎨</span>
+      <span>⏰</span>
+      <span>👤</span>
+      <span>📥</span>
+      <span>⋮</span>
     </div>
 
-    <input class="search" type="text" placeholder="Search" />
-  </header>
-
-  <!-- BODY -->
-  <div class="body">
-
-    <!-- SIDEBAR -->
-    <aside class="sidebar" [class.closed]="!isSidebarOpen">
-      <ul class="menu">
-        <li class="active">💡 Notes</li>
-        <li>⏰ Reminders</li>
-        <li>🏷 Edit labels</li>
-        <li>📥 Archive</li>
-        <li>🗑 Trash</li>
-      </ul>
-    </aside>
-
-    <!-- MAIN CONTENT -->
-    <main class="main">
-
-      <!-- CREATE NOTE -->
-      <div class="create-note">
-        <input
-          type="text"
-          placeholder="Take a note..."
-          [(ngModel)]="description"
-        />
-
-        <div class="icons">
-          <span>✔</span>
-          <span>✏</span>
-         
-        </div>
-      </div>
-
-      <!-- EMPTY STATE -->
-      <div class="empty-state" *ngIf="notes.length === 0">
-        <div class="empty-icon">🔍</div>
-        <p>Notes you add appear here</p>
-      </div>
-
-    </main>
-
+    <button (click)="closeNote()">Close</button>
   </div>
+
 </div>

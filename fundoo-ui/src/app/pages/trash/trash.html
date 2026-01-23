@@ -1,1 +1,15 @@
-<p>trash works!</p>
+<h3>Trash</h3>
+
+<div *ngIf="trashedNotes.length === 0">
+  <p>No notes in Trash</p>
+</div>
+
+<div class="notes-container">
+  <div class="note" *ngFor="let note of trashedNotes">
+    <h4>{{ note.title }}</h4>
+    <p>{{ note.description }}</p>
+
+    <button (click)="restore(note)">♻ Restore</button>
+    <button (click)="deleteForever(note.id!)">❌ Delete Forever</button>
+  </div>
+</div>
